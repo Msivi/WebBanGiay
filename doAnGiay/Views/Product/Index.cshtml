@@ -1,0 +1,179 @@
+﻿@model List<doAnGiay.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/shared/_LayoutPage1.cshtml";
+}
+@*<form  class="d-flex flex-grow align-items-center flex-wrap  m-4" action="/Product/index"  >
+    <label for="search" class="mx-2 my-1">Search </label>
+    <input type="search" class="form-control w-auto" id="search" name="search" placeholder="Search" />
+    <button type="submit" class="btn btn-primary mx-2"> Go </button>
+</form>*@
+<style>
+    .sapxep {
+        border-bottom: 1px solid black;
+        padding: 25px;
+    }
+
+        .sapxep:hover {
+            border-bottom: 1px solid black;
+            background-color: grey;
+        }
+
+        .sapxep a {
+            text-decoration: none;
+            color: #423F3E
+        }
+
+            .sapxep a:hover {
+                color: red;
+            }
+
+    .nike:hover {
+        border-bottom: 1px solid black;
+        background-color: grey
+    }
+
+    .nike {
+        border-bottom: 1px solid black;
+        padding: 25px;
+        text-align: center;
+    }
+
+        .nike a {
+            text-decoration: none;
+            color: black;
+        }
+
+            .nike a:hover {
+                color: red;
+            }
+</style>
+ @{
+     string iconClass = "";
+     if(ViewBag.IConClass== "fa-sort-desc")
+     {
+         iconClass = "fa-sort-asc";
+     }
+     else
+     {
+         iconClass = "fa-sort-desc";
+     }
+ }
+<div class="row">
+    <div class="col-md-2 ss">
+        <div class="sapxep">
+            <a href="/product/index?SortColumn=ProductId&IconClass=@iconClass &page=1"><h6>SẮP XẾP THEO MÃ SP</h6></a>
+            @if (ViewBag.SortColumn == "ProductId")
+            {
+                <i class="fa @ViewBag.IconClass"></i>
+            }
+        </div>
+        <div class="sapxep">
+            <a href="/product/index?SortColumn=ProductName&IconClass=@iconClass &page=1"> <h6>SẮP XẾP THEO TÊN SP</h6></a>
+            @if (ViewBag.SortColumn == "ProductName")
+            {
+                <i class="fa @ViewBag.IconClass"></i>
+            }
+
+
+        </div>
+        <div class="sapxep">
+            <a href="/product/index?SortColumn=Price&IconClass=@iconClass &page=1"><h6>GIÁ TIỀN GIẢM DẦN</h6></a>
+            @if (ViewBag.SortColumn == "Price")
+            {
+                <i class="fa @ViewBag.IconClass"></i>
+            }
+
+
+        </div>
+        <div class="nike">
+            <a href="/product/brandnike"><h5>NIKE</h5></a>
+        </div>
+
+        <div class="nike">
+            <a href="/product/brandAdidas"><h5>ADIDAS</h5></a>
+        </div>
+        <div class="nike">
+            <a href="/product/brandMlb"><h5>MLB</h5></a>
+        </div>
+
+    </div>
+    <div class="col-md-10">
+        <div class="row row-cols-1 row-cols-md-3 g-4 w-100 h-125">
+            @foreach (var item in Model)
+            {
+                
+                <div class="col">
+                    <div class="card">
+
+                        <img style="width:300px; height:300px" src="@item.ImageUrl" alt="Alternate Text" />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.ProductName </h5>
+                            <h5 class="card-text text-warning"> Price: @item.Price $</h5>
+                            <p class="card-title">Dành cho: @item.Gender </p>
+
+                            <a href="/Product/chitietSP/ @item.ProductId" class="btn btn-primary">Chọn sản phẩm</a>
+                        </div>
+                    </div>
+                </div>
+                
+            }
+
+        </div>
+     
+    </div>
+    <tr class="py-4">
+        <td colspan="5">
+            @{ 
+                int PrevPage = ViewBag.page - 1;
+                if(PrevPage <= 0)
+                {
+                    PrevPage = 1;
+                }
+                int NextPage = ViewBag.page + 1;
+                if(NextPage>ViewBag.noOfPage)
+                {
+                    NextPage = ViewBag.noOfPage;
+                }
+            }
+            <ul class="pagination justify-content-center">
+                <li class="page-item py-2">
+                    <a class="page-link" href="/product/index?SortColumn=@ViewBag.SortColumn  &page=@PrevPage">
+                        Prev
+                    </a>
+                </li>
+                @for (int i = 0; i < ViewBag.noOfPage; i++)
+                {
+                    if (i + 1 == ViewBag.page)
+                    {
+
+                        <li class="page-item py-2 active">
+                            <a class="page-link" href="/product/index?SortColumn=@ViewBag.SortColumn  &page=@(i+1)">
+                                @(i+1)
+                            </a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="page-item py-2">
+                            <a class="page-link" href="/product/index?SortColumn=@ViewBag.SortColumn  &page=@(i+1)">
+                                @(i+1)
+                            </a>
+                        </li>
+                    }
+
+                }
+                <li class="page-item py-2 active">
+                    <a class="page-link" href="/product/index?SortColumn=@ViewBag.SortColumn  &page=@NextPage">
+                        Next
+                    </a>
+                </li>
+
+            </ul>
+        </td>
+    </tr> 
+   
+</div>
+
+

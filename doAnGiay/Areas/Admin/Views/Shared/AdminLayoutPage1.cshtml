@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg bg-black text-white ">
+            <div class="container-fluid" style="justify-content:space-evenly">
+                <div>
+                    <img style="width: 80px;" src="~/imgs/levi.jpg" />
+
+                </div>
+                <div>
+                    <a class="navbar-brand text-white " href="/admin/home/index/">ADMIN</a>
+                    <a class="navbar-brand text-white" href="/admin/product/index/">SẢN PHẨM</a>
+                    <a class="navbar-brand text-white" href="/admin/QLUser/index/">Quản Lý User</a>
+                    <a class="navbar-brand text-white" href="/admin/brands/index/">Brands</a>
+                </div>
+                <div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        
+                        @*<form class="d-flex text-white" role="search" action="/Product/index">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>*@
+                        <form class="d-flex flex-grow align-items-center flex-wrap  m-4" action="/admin/Product/index">
+                            <label for="search" class="mx-2 my-1"></label>
+                            <input type="search" class="form-control w-auto me-2" id="search" name="search" placeholder="Search" />
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+                <div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="navbar-brand text-white" href="/Account/Logout">Đăng xuất </a>
+                    }
+                 
+
+                </div>
+            </div>
+        </nav>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div style="color:red; font-weight:bold">
+
+            </div>
+
+        }
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+    <section class="footer clearfix bg-black py-4">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 text-white">
+                    <H3>CHÚNG TÔI LÀ AI ? </H3>
+                    Một người trong trái đất này mang lại cho bạn những sản phẩm tốt nhất với cái giá hợp lý nhất.
+                </div>
+                <div class="col-md-3 text-white">
+                    <H3>CHÍNH SÁCH</H3>
+                    Bảo về khách hàng là mục tiêu tiên quyết được đặt lên hàng đầu.
+                </div>
+                <div class="col-md-3 text-white">
+                    <H3>KHU BÁN HÀNG</H3>
+                    1a, Đỗ Nhuận, Sơn Kỳ, Tân Phú, TPHCM.<br />
+                    Bạn có thể liên hệ trực tiếp mua hàng trên page của chúng tôi.
+                </div>
+                <div class="col-md-3 text-white">
+                    <H3>TRỢ GIÚP CHUNG</H3>
+                    Khách hành liên hệ: <br />
+                    Facebook: <a href="https://www.facebook.com/vi.lee.18488">  để nhân hỗ trợ thêm</a> <br />
+                    Email: <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox">levi@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer clearfix bg-black py-4">
+        <div class="container-fluid border-top border-light">
+            <div class="row">
+                <div class="col-6 py-2 text-light">
+                    Bản quyền thuộc về LeVi Create Cung cấp bởi LeVi
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="~/bootstrap/js/jquery-3.3.1.min.js"></script>
+    <script src="~/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

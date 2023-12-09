@@ -1,0 +1,35 @@
+﻿@model List<doAnGiay.Models.Product>
+@{
+    ViewBag.Title = "getProduct";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<h2>getProduct</h2>
+<button type="button" id="btnGetProduct" >Get Product </button>
+<table class="table productTable" >
+    <tr>
+        <th>Brand id</th>
+        <th>Brand Name</th>
+        <th>Category id</th>
+        <th>Category Name</th>
+
+    </tr>
+</table>
+<script>
+    $('#btnGetProduct').click(() => {
+        $.ajax({
+            type: 'Get',
+            url: '/api/product',
+            success: (responses) => {
+                for (var i = 0; i <= responses.length; i++) {
+                    const brandRow = responses[i];
+                    const strHTML = '<tr><td>' + brandRow.productID + '</td><td>' + brandRow.productName +
+                        $('.productTable').append(strHTML);
+                }
+            },
+            Error: (err) => { console.log(err); }
+
+        });
+    });
+</script>
+

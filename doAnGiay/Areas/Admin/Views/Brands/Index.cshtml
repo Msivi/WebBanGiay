@@ -1,0 +1,24 @@
+﻿@model List<doAnGiay.Models.Brands>
+@{
+    ViewBag.Title = "Index";
+    
+}
+
+<h2>Brand</h2>
+<div style="height:400px">
+    <table class=" table">
+        <tr>
+            <th>Brands ID</th>
+            <th>Brands Name</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BrandID</td>
+                <td>@item.BrandName</td>
+            </tr>
+
+        }
+    </table>
+</div>
+

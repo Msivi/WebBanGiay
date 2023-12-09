@@ -1,0 +1,28 @@
+﻿@model doAnGiay.Identity.AppUser
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+<div class="m-4">
+    @using (Html.BeginForm("edit", "QLUser", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            @Html.LabelFor(row => row.UserName)
+            @Html.TextBoxFor(row => row.UserName, new { @class = "form-control", placeholder = "tên tài khoản" })
+            @Html.LabelFor(row => row.PhoneNumber)
+            @Html.TextBoxFor(row => row.PhoneNumber, new { @class = "form-control", placeholder = "Số điện thoại" })
+            @Html.LabelFor(row => row.Email)
+            @Html.TextBoxFor(row => row.Email, new { @class = "form-control", placeholder = "Email" })
+            @Html.LabelFor(row => row.Address)
+            @Html.TextBoxFor(row => row.Address, new { @class = "form-control", placeholder = "Địa chỉ" })
+            @Html.LabelFor(row => row.City)
+            @Html.TextBoxFor(row => row.City, new { @class = "form-control", placeholder = "Thành phố " })
+            @Html.LabelFor(row => row.Birthday)
+            @Html.TextBoxFor(row => row.Birthday, new { @class = "form-control", placeholder = "Ngày sinh " })
+        </div>
+        <button type="submit" class="btn btn-primary m-4">Edit</button>
+    }
+<a style="text-decoration:none" href="/admin/QLUser/index"> <= Back to Manager user</a>
+</div>
+
+

@@ -1,0 +1,23 @@
+﻿@model doAnGiay.Identity.AppUser
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<div class="m-4">
+    @using (Html.BeginForm("delete", "QLUser", "admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            @Html.LabelFor(row => row.UserName)
+            @Html.TextBoxFor(row => row.UserName, new { @class = "form-control", placeholder = "tên tài khoản" })
+            @Html.LabelFor(row => row.PhoneNumber)
+            @Html.TextBoxFor(row => row.PhoneNumber, new { @class = "form-control", placeholder = "Số điện thoại" })
+            @Html.LabelFor(row => row.Address)
+            @Html.TextBoxFor(row => row.Address, new { @class = "form-control", placeholder = "Địa chỉ" })
+
+        </div>
+        <button type="submit" class="btn btn-danger m-4">Delete</button>
+
+    }
+    <a href="/admin/QLUser/index"><button type="submit" class="btn btn-success m-4">Cancel</button></a>
+</div>

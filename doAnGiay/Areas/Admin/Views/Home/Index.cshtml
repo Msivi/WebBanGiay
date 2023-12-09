@@ -1,0 +1,96 @@
+﻿ 
+@model List<doAnGiay.Models.Product>
+@{
+    ViewBag.Title = "Index";
+   
+}
+
+<style>
+    .trend {
+        box-shadow: rgba(240, 46, 170, 0.05) 0px 25px;
+    }
+</style>
+<div>
+    <div class="container-fluid" style="padding:0;padding-left:0">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+
+            </ol>
+
+            <div class="carousel-inner ">
+                <div class="carousel-item active">
+                    <img   class="d-block w-100" src="~/imgs/slide_4.jpg" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/imgs/Nike-Air-Max-720-1.jpg" alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/imgs/Nike-Air-Max-720-Northern-Lights-Night.jpg" alt="Third slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="~/imgs/slide_1.jpg" alt="Four slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only"> </span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only"> </span>
+            </a>
+
+        </div>
+
+
+    </div>
+    <div class="container-fluid">
+        <div class="row" style="background-color: black; height:700px">
+            <div class="col-md-6 text-white" style="position:relative; top:40%;text-align:center">
+                <h1> NEVER STOP</h1>
+                <h3>Push The Limits Of The Impossible</h3>
+                <button type="button" class="btn btn-secondary">BUY NOW</button>
+            </div>
+            <div class="col-md-6">
+                <img style="height:680px" src="~/imgs/postter.jpg" />
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid  " style="background-color: #151515; text-align:center">
+        <div class="trend">
+            <h1 class=" py-4  "> TRENDING ITEMS</h1>
+
+        </div>
+        <div>
+            <div class="col-12">
+        <div class="row row-cols-1 row-cols-md-3 g-4 w-100 h-125">
+            @foreach (var item in Model)
+            {
+
+                <div class="col">
+                    <div class="card">
+
+                        <img style="width:300px; height:300px" src="@item.ImageUrl" alt="Alternate Text" />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.ProductName </h5>
+                            <p class="card-text"> Giá: @item.Price $</p>
+                            <h5 class="card-title">Dành cho: @item.Gender </h5>
+
+                            <a href="/admin/Home/chitiet/ @item.ProductId" class="btn btn-primary">Đặt mua</a>
+                        </div>
+                    </div>
+                </div>
+             }
+
+
+
+            </div>
+        </div>
+            
+        </div>
+
+</div>

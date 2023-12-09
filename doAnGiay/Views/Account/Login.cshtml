@@ -1,0 +1,45 @@
+﻿@model doAnGiay.ViewModel.loginVM
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/shared/_LayoutPage1.cshtml";
+}
+
+<style>
+    .validation-summary-errors{
+        color:red;
+    }
+</style>
+
+<h2>Đăng nhập</h2>
+<div style="height:400px">
+    @using (Html.BeginForm("login", "Account", FormMethod.Post))
+    {
+        <div class="row w-25 mx-auto">
+            <div class="col-md-12">
+                @Html.LabelFor(temp => temp.UserName)
+                @Html.TextBoxFor(temp => temp.UserName, new { placehoder = "Username", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.UserName)
+
+            </div>
+            <div class="col-md-12 ">
+                @Html.LabelFor(temp => temp.Password)
+                @Html.PasswordFor(temp => temp.Password, new { placehoder = "Password", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.Password)
+
+            </div>
+        </div>
+        <div class="row w-25 mx-auto">
+            <div class="col-md-12">
+                @Html.ValidationSummary()
+            </div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button style="width:110px" type="submit" class="btn btn-success m-2">Đăng Nhập</button>
+            </div>
+        </div>
+
+    }
+</div>
+
+

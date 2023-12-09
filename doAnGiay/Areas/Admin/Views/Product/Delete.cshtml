@@ -1,0 +1,30 @@
+﻿@model doAnGiay.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<h2>Delete Product</h2>
+<form action="/admin/product/delete/@Model.ProductId" method="post">
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+    
+    <div class="card w-25 mx-auto">
+
+        <img style="width:300px; height:300px" src="@Model.ImageUrl" alt="Alternate Text" />
+        <div class="card-body">
+            <h5 class="card-title">@Model.ProductName </h5>
+            <p class="card-text"> Giá: @Model.Price $</p>
+            <h5 class="card-title">Dành cho: @Model.Gender </h5>
+
+           
+            
+        </div>
+    </div>
+    <div class="w-25 mx-auto m-3">
+        <h5>Bạn có chắc muốn xóa ? </h5>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a href="/admin/product" class="btn btn-success">Cancel</a>
+    </div>
+</form>
+

@@ -1,0 +1,34 @@
+﻿@model doAnGiay.Models.Product
+
+@{
+    ViewBag.Title = "chiTiet";
+    
+}
+
+<h2 class="py-4">Thông tin sản phẩm</h2>
+<div class="row">
+    <div class="col-md-4">
+        <img style="width:400px; height:400px" src="@Model.ImageUrl" alt="Alternate Text" />
+    </div>
+    <div class="col-md-4">
+        <h3>@Model.ProductName</h3>
+        <h6>Mã SP:@Model.ProductId  </h6>
+
+        <h5>Giá: @Model.Price $</h5>
+        <h6> Loại giày dành cho: @Model.Gender</h6>
+        <h6>Size có sẵn: @Model.Size</h6>
+        <h6>Status: @Model.AvailabilityStatus</h6>
+        <div>
+            <ul>
+                <li>  @Model.ProductName. </li>
+                <li>
+                    Condition: Giày 2hand chính hãng.
+                </li>
+
+                <li> Quà tặng: Vớ Nike (trắng/đen)</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<a href="@Url.Action("Index","Home")  ">Back to List of HomePage</a>

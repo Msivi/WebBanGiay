@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "adBrandNike";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<style>
+    .sapxep {
+        border-bottom: 1px solid black;
+        padding: 25px;
+    }
+
+        .sapxep:hover {
+            border-bottom: 1px solid black;
+            background-color: grey;
+        }
+
+        .sapxep a {
+            text-decoration: none;
+            color: #423F3E
+        }
+
+            .sapxep a:hover {
+                color: red;
+            }
+
+    .nike:hover {
+        border-bottom: 1px solid black;
+        background-color: grey
+    }
+
+    .nike {
+        border-bottom: 1px solid black;
+        padding: 25px;
+        text-align: center;
+    }
+
+        .nike a {
+            text-decoration: none;
+            color: black;
+        }
+
+            .nike a:hover {
+                color: red;
+            }
+</style>
+
+@{
+    string iconClass = "";
+    if (ViewBag.IConClass == "fa-sort-desc")
+    {
+        iconClass = "fa-sort-asc";
+    }
+    else
+    {
+        iconClass = "fa-sort-desc";
+    }
+}
+<div class="row">
+    <div class="col-md-2 ss">
+        <div class="nike">
+            <a href="/admin/product/create"><h6>THÊM SẢN PHẨM</h6></a>
+        </div>
+        <div class="sapxep">
+            <a href="/admin/product/index?SortColumn=ProductId&IconClass=@iconClass &page=1"><h6>SẮP XẾP THEO MÃ SP</h6></a>
+            @if (ViewBag.SortColumn == "ProductId")
+            {
+                <i class="fa @ViewBag.IconClass"></i>
+            }
+        </div>
+        <div class="sapxep">
+            <a href="/admin/product/index?SortColumn=ProductName&IconClass=@iconClass &page=1"><h6>SẮP XẾP THEO TÊN SP</h6></a>
+            @if (ViewBag.SortColumn == "ProductName")
+            {
+                <i class="fa @ViewBag.IconClass"></i>
+            }
+
+
+        </div>
+        <div class="sapxep">
+            <a href="/admin/product/index?SortColumn=Price&IconClass=@iconClass &page=1"><h6>GIÁ TIỀN GIẢM DẦN</h6></a>
+            @if (ViewBag.SortColumn == "Price")
+            {
+                <i class="fa @ViewBag.IconClass"></i>
+            }
+
+
+        </div>
+        <div class="nike">
+            <a href="/admin/product/brandnike"><h5>NIKE</h5></a>
+        </div>
+        <div class="nike">
+            <a href="/admin/product/brandAdidas"><h5>ADIDAS</h5></a>
+        </div>
+        <div class="nike">
+            <a href="/admin/product/brandMlb"><h5>MLB</h5></a>
+        </div>
+
+
+
+    </div>
+    <div class="col-md-10">
+        <div class="row row-cols-1 row-cols-md-3 g-4 w-100 h-125">
+            @foreach (var item in Model)
+            {
+                if (item.Brands.BrandID == 1)
+                {
+                    <div class="col">
+                        <div class="card">
+                            <img style="width:300px; height:300px" src="@item.ImageUrl" alt="Alternate Text" />
+                            <div class="card-body">
+                                <h5 class="card-title">@item.ProductName </h5>
+                                <p class="card-text"> Giá: @item.Price $</p>
+                                <h5 class="card-title">Dành cho: @item.Gender </h5>
+
+                                <a href="/admin/Product/chitietSP/ @item.ProductId" class="btn btn-primary">Đặt mua</a>
+                                <div>
+                                    <a href="/admin/Product/Edit/@item.ProductId">Edit</a>
+                                    |
+                                    <a href="/admin/Product/Delete/@item.ProductId">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+
+    </div>
+</div>
+

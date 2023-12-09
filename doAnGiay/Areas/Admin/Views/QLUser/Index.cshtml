@@ -1,0 +1,38 @@
+﻿@model List<doAnGiay.Identity.AppUser>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+<div class="m-2">
+    <a href="/admin/Account/regiterAD">tạo người dùng mới</a>
+    <h2>Danh Sách Thông Tin Khách Hàng</h2>
+</div>
+<div style="height:400px" class="m-4">
+    <table class="table"
+        <tr>
+            <th>User Name</th>
+            <th>PhoneNumber</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>BirthDay</th>
+        </tr>
+        @foreach(var item in  Model)
+         {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.PhoneNumber</td>
+                <td>@item.Email</td>
+                <td>@item.Address</td>
+                <td>@item.City</td>
+                <td>@item.Birthday</td>
+                <td>
+                    <a href=@Url.Action("edit", "QLUser", new { id = item.Id }) class="">Edit</a>
+                    <a href=@Url.Action("Delete", "QLUser", new { id = item.Id }) class"">Delete</a>
+                </td>
+            </tr>
+         }
+    </table>
+
+</div>
